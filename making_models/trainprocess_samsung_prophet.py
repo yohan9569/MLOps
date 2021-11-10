@@ -41,7 +41,7 @@ data['ds'] = data['Date']
 m = Prophet()
 m.fit(data)
 
-model_path = '/Users/TFG5076XG/Desktop/learning_mlops/samsung_prophet_model.json'
+model_path = '/Users/TFG5076XG/Desktop/MLOps/samsung_prophet_model.json'
 with open(model_path, 'w') as fout:
     json.dump(model_to_json(m), fout)
 
