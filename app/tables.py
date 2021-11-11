@@ -1,7 +1,5 @@
 
 
-import datetime
-
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import now
@@ -9,7 +7,6 @@ from sqlalchemy.sql.functions import now
 from app.database import Base
 
 
-# KST = datetime.timezone(datetime.timedelta(hours=9))
 
 class ModelCore(Base):
     __tablename__ = "model_core"

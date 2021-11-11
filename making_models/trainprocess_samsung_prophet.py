@@ -35,8 +35,6 @@ stock.to_sql('stock_data', conn, if_exists='replace')
 data = pd.read_sql("select * from stock_data;", conn)
 data = preprocess(data)
 
-data['y'] = data['Close']
-data['ds'] = data['Date']
 
 m = Prophet()
 m.fit(data)
