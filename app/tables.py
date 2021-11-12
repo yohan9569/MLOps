@@ -1,11 +1,10 @@
-
+# -*- coding: utf-8 -*-
 
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import now
 
 from app.database import Base
-
 
 
 class ModelCore(Base):
@@ -35,8 +34,3 @@ class ModelMetadata(Base):
     train_mse = Column(Float, nullable=False)
     val_mse = Column(Float, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=now())
-
-
-
-
-

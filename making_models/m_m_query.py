@@ -8,5 +8,3 @@ WHERE NOT EXISTS (SELECT 1
 				 FROM model_core as mc 
 				 WHERE mc.model_name = '{mn}');
 """
-
-

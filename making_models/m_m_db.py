@@ -4,7 +4,7 @@ import sqlalchemy
 from dotenv import load_dotenv
 
 
-def connect(db='postgres'):
+def connect(db="postgres"):
 
     load_dotenv(verbose=True)
 
@@ -18,4 +18,3 @@ def connect(db='postgres'):
     connection = sqlalchemy.create_engine(url)
 
     return connection
-

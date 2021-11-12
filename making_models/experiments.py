@@ -1,27 +1,19 @@
-
-
-import os
-from os.path import join
 import multiprocessing
+import os
 import warnings
-warnings.filterwarnings('ignore')
+from os.path import join
+
+warnings.filterwarnings("ignore")
 
 import numpy as np
 import pandas as pd
-from prophet import Prophet
 import wandb
-
-from preprocessing import preprocess
 from m_m_db import connect
 from m_m_query import *
+from preprocessing import preprocess
+from prophet import Prophet
 
-
-
-sweep_config = {
-
-
-
-}
+sweep_config = {}
 
 sweep_id = wandb.sweep(sweep_config, project="mlops_prophet")
 n_cups = multiprocessing.cpu_count()
@@ -35,7 +27,6 @@ data = preprocess(data)
 
 # 실험 함수
 def experiment():
-
 
     metrics = {}
     wandb.log(metrics)

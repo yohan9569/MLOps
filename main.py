@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from typing import Optional
 from enum import Enum
 
@@ -14,7 +16,6 @@ app = FastAPI()
 app.include_router(predict.router)
 
 
-
 class Item(BaseModel):  # tutorial_contents
     name: str
     price: float
@@ -22,23 +23,22 @@ class Item(BaseModel):  # tutorial_contents
 
 
 class ModelName(str, Enum):
-    prophet = 'prophet'
-
+    prophet = "prophet"
 
 
 @app.get("/")
 async def rad_root():
-    return {"Hello":"World"}
+    return {"Hello": "World"}
 
 
 @app.get("/models/{model_name}")
 async def get_model(model_name: ModelName):
-    if model_name.value == 'prophet':
-        return {"model_name": model_name,
-                "message": "Prophet is open source software released by Facebook’s Core Data Science team. It is available for download on CRAN and PyPI."}
+    if model_name.value == "prophet":
+        return {
+            "model_name": model_name,
+            "message": "Prophet is open source software released by Facebook’s Core Data Science team. It is available for download on CRAN and PyPI.",
+        }
     return {"model_name": model_name, "message": "enjoy it!"}
-
-
 
 
 # uvicorn main:app --reload

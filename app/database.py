@@ -1,11 +1,11 @@
-import os # os를 제어할 수 있는 모듈
+import os  # os를 제어할 수 있는 모듈
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine # db랑 object 연결. Object-Relational Mapping
+from sqlalchemy import create_engine  # db랑 object 연결. Object-Relational Mapping
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-load_dotenv(verbose=True) # .env 읽어서 불러오기
+load_dotenv(verbose=True)  # .env 읽어서 불러오기
 
 
 def connect(db):
@@ -28,7 +28,7 @@ def connect(db):
     """
     print(db)
 
-    POSTGRES_USER = os.getenv("POSTGRES_USER") # 로드된 환경 변수를 담는다.
+    POSTGRES_USER = os.getenv("POSTGRES_USER")  # 로드된 환경 변수를 담는다.
     POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
     POSTGRES_PORT = os.getenv("POSTGRES_PORT")
     POSTGRES_SERVER = os.getenv("POSTGRES_SERVER")
@@ -50,4 +50,3 @@ session = Session()
 # session 테이블에 내용물 넣을 때 사용하자
 Base = declarative_base()
 # 테이블 만들 때 사용. # 상속클래스들을 자동으로 인지하고 알아서 매핑해줌.
-
