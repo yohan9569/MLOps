@@ -1,0 +1,23 @@
+program: experiments.py
+name: prophet_sweep
+method: bayes
+parameters:
+  changepoint_prior_scale:
+    distribution: uniform
+    min: 0.001
+    max: 0.5
+  seasonality_prior_scale:
+    distribution: uniform
+    min: 0.01
+    max: 10
+  seasonality_mode:
+    distribution: categorical
+    values:
+      - additive
+      - multiplicative
+metric:
+  name: cv_rmse
+early_terminate:
+  type: hyperband
+  max_iter: 27
+
