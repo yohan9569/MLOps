@@ -5,9 +5,9 @@ from enum import Enum
 
 import numpy as np
 import pandas as pd
+from fastapi import APIRouter
 from prophet import Prophet
 from prophet.serialize import model_from_json
-from fastapi import APIRouter
 
 from app.database import engine
 from app.query import *

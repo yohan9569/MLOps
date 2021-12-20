@@ -22,7 +22,9 @@ conn = connect()
 # 주가 데이터 가져오기
 # 삼성전자 주식코드: 005930
 stock_code = "005930"
-base_date = (datetime.datetime.today() + relativedelta(years=-1)).strftime("%Y-%m-%d")
+base_date = (datetime.datetime.today() + relativedelta(years=-1)).strftime(
+    "%Y-%m-%d"
+)
 stock = fdr.DataReader(stock_code, base_date)
 
 # db에 데이터 넣기
@@ -42,4 +44,6 @@ with open(model_path, "w") as fout:
 
 
 # 모델 넣는 쿼리 실행
-conn.execute(insert_or_update_model.format(mn="samsung_prophet_model", mf=model_path))
+conn.execute(
+    insert_or_update_model.format(mn="samsung_prophet_model", mf=model_path)
+)

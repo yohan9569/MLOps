@@ -31,11 +31,12 @@ def experiment():
         # db 연결하기
         conn = connect()
 
-
         # 주가 데이터 가져오기
         # 삼성전자 주식코드: 005930
         stock_code = "005930"
-        base_date = (datetime.datetime.today() + relativedelta(years=-1)).strftime("%Y-%m-%d")
+        base_date = (
+            datetime.datetime.today() + relativedelta(years=-1)
+        ).strftime("%Y-%m-%d")
         stock = fdr.DataReader(stock_code, base_date)
 
         # db에 데이터 넣기
@@ -47,21 +48,24 @@ def experiment():
         # 전처리
         data = preprocess(data)
 
-
         # 학습 ### cv 구현해야 함.
         m = Prophet()
         m.fit(data)
 
-
         # 모델 저장 ### 어떻게 베스트 버전 파일만 저장할까?
         # 모델 파일 만들기 ### 버전마다 이름 다르게 해야 함.
-        model_path = "/Users/TFG5076XG/Desktop/MLOps/samsung_prophet_model.json"
+        model_path = (
+            "/Users/TFG5076XG/Desktop/MLOps/samsung_prophet_model.json"
+        )
         with open(model_path, "w") as fout:
             json.dump(model_to_json(m), fout)
 
         # db에 모델 넣기
-        conn.execute(insert_or_update_model.format(mn="samsung_prophet_model", mf=model_path))
-
+        conn.execute(
+            insert_or_update_model.format(
+                mn="samsung_prophet_model", mf=model_path
+            )
+        )
 
         metrics = {"cv_rmse": cv_rmse}
         wandb.log(metrics)
@@ -71,8 +75,6 @@ def experiment():
 count = 5
 wandb.login(key="638bebf7fb7de2d84c427979c5808703b7eee6f4")
 wandb.agent(sweep_id, function=experiment, count=count)
-
-
 
 
 ### 이 아래 항목들 위랑 겹치는 것 같다. 출처가 다른 곳에서 가져온 프로세스라서 헷갈림.

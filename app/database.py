@@ -1,7 +1,9 @@
 import os  # os를 제어할 수 있는 모듈
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine  # db랑 object 연결. Object-Relational Mapping
+from sqlalchemy import (  # db랑 object 연결. Object-Relational Mapping
+    create_engine,
+)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 

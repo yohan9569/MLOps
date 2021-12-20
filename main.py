@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from typing import Optional
 from enum import Enum
+from typing import Optional
 
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 from app.api.router import predict
-
 
 app = FastAPI()
 
